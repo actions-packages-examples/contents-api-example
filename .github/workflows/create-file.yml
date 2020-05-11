@@ -3,10 +3,7 @@ on: watch
 jobs: 
   create-file:
 
-    # Only certain actors can perform this action.
-    # https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context
-    # https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#contains
-    if: contains(['francisfuzz', 'b4mboo'], github.actor)
+    if: github.actor == 'francisfuzz' || github.actor == 'b4mboo'
 
     runs-on: ubuntu-latest
     steps:
