@@ -1,0 +1,27 @@
+on: watch
+
+jobs: 
+  create-file:
+    if: github.actor == 'francisfuzz'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@0.9.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}} 
+          script: |
+            
+            const d = new Date()
+
+            const result = await github.repos.createOrUpdateFile({
+              owner: "actions-packages-examples",
+              repo: "contents-api-example",
+              path: `${d}.txt`,
+              message: `Created: ${d}`,
+              content: `${d}`,
+              committer: {
+                name: "github-actions",
+                email: "github-actions@users.noreply.github.com"
+              }
+            })
+            
+            console.log(result)
