@@ -10,7 +10,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}} 
           script: |
             
-            const d = new Date()
+            const d = Date.now().toString()
 
             const result = await github.repos.createOrUpdateFile({
               owner: "actions-packages-examples",
