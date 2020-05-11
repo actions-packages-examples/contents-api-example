@@ -17,7 +17,7 @@ jobs:
               repo: "contents-api-example",
               path: `${d}.txt`,
               message: `Created: ${d}`,
-              content: `${d}`,
+              content: `${Buffer.from(d).toString('base64')}`,
               committer: {
                 name: "github-actions",
                 email: "github-actions@users.noreply.github.com"
